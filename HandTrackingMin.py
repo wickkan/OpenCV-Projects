@@ -4,13 +4,19 @@ import time
 
 cap = cv2.VideoCapture(0)
 
+mpHands = mp.solutions.hands
+hands = mpHands.Hands()
+
+
 if not cap.isOpened():
     print("Error: Could not open camera.")
     exit()
 
+
 while True:
     success, img = cap.read()
-
+    imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    results = hands.process(imgRGB)
     if not success:
         print("Failed to capture image")
         break
@@ -18,6 +24,7 @@ while True:
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 
 cap.release()
 cv2.destroyAllWindows()
