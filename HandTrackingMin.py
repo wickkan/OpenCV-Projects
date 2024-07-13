@@ -17,6 +17,8 @@ while True:
     success, img = cap.read()
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = hands.process(imgRGB)
+    print(results.multi_hand_landmarks)
+
     if not success:
         print("Failed to capture image")
         break
