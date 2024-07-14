@@ -5,13 +5,17 @@ import time
 
 class handDetector():
 
-    def __init__(self, ):
-        pass
+    def __init__(self, mode=False, maxHands=2, detectionCon=0.5, trackCon=0.5):
+        self.mode = mode
+        self.maxHands = maxHands
+        self.detectionCon = detectionCon
+        self.trackCon = trackCon
 
+        self.mpHands = mp.solutions.hands
+        self.hands = self.mpHands.Hands(
+            self.mode, self.maxHands, self.detectionCon, self.trackCon)
+        self.mpDraw = mp.solutions.drawing_utils
 
-mpHands = mp.solutions.hands
-hands = mpHands.Hands()
-mpDraw = mp.solutions.drawing_utils
 
 results = hands.process(imgRGB)
  # print(results.multi_hand_landmarks)
