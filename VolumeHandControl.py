@@ -1,11 +1,20 @@
-from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
-from ctypes import cast, POINTER
 import cv2
 import time
 import numpy as np
 import HandTrackingModule as htm
 import math
-from comtypes import CLSCTX_ALL
+import osascript
+
+
+def get_volume():
+    script = "output volume of (get volume settings)"
+    volume = osascript.osascript(script)[1]
+    return int(volume)
+
+
+def set_volume(volume):
+    script = f"set volume output volume {volume}"
+    osascript.osascript(script)
 
 
 ######################
@@ -19,15 +28,7 @@ pTime = 0
 
 detector = htm.handDetector(detectionCon=0.7)
 
-
-devices = AudioUtilities.GetSpeakers()
-interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
-volume = cast(interface, POINTER(IAudioEndpointVolume))
-# volume.GetMute()
-# volume.GetMasterVolumeLevel()
-print(volume.GetVolumeRange())
-# volume.SetMasterVolumeLevel(-20.0, None)
-
+volRange = [0, 100]  # Mac volume range
 
 while True:
     success, img = cap.read()
@@ -47,7 +48,12 @@ while True:
         cv2.line(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
         cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
-        length = math.hypot(x2-x1, y2-y1)
+        length = math.hypot(x2 - x1, y2 - y1)
+
+        # Hand range 50 - 300
+        # Volume range 0 - 100
+        vol = np.interp(length, [50, 300], volRange)
+        set_volume(int(vol))
 
         if length < 50:
             cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
