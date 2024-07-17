@@ -50,8 +50,6 @@ while True:
 
         length = math.hypot(x2 - x1, y2 - y1)
 
-        # Hand range 50 - 300
-        # Volume range 0 - 100
         vol = np.interp(length, [50, 300], volRange)
         set_volume(int(vol))
 
