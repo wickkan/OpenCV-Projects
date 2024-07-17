@@ -18,13 +18,15 @@ cap.set(4, hCam)
 pTime = 0
 
 detector = htm.handDetector(detectionCon=0.7)
+
+
 devices = AudioUtilities.GetSpeakers()
 interface = devices.Activate(IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
 volume = cast(interface, POINTER(IAudioEndpointVolume))
-volume.GetMute()
-volume.GetMasterVolumeLevel()
-volume.GetVolumeRange()
-volume.SetMasterVolumeLevel(-20.0, None)
+# volume.GetMute()
+# volume.GetMasterVolumeLevel()
+print(volume.GetVolumeRange())
+# volume.SetMasterVolumeLevel(-20.0, None)
 
 
 while True:
