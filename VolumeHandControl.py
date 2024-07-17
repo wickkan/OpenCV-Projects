@@ -50,11 +50,17 @@ while True:
 
         length = math.hypot(x2 - x1, y2 - y1)
 
+        # Hand range 50 - 300
+        # Volume range 0 - 100
         vol = np.interp(length, [50, 300], volRange)
         set_volume(int(vol))
 
         if length < 50:
             cv2.circle(img, (cx, cy), 15, (0, 255, 0), cv2.FILLED)
+
+        # Display volume level
+        cv2.putText(img, f'Volume: {int(vol)}%', (40, 100),
+                    cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 3)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
