@@ -6,5 +6,15 @@ cap.set(4, 720)
 
 while True:
     success, img = cap.read()
+    if not success:
+        print("Failed to capture image")
+        break
+
     cv2.imshow("Image", img)
-    cv2.waitKey(1)
+
+    # Check for 'q' key press to exit
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
