@@ -19,6 +19,8 @@ while True:
     if lmList:
         print(lmList)
 
+    cv2.rectangle(img, (100, 100), (300, 300), (255, 0, 255), cv2.FILLED)
+
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
