@@ -13,7 +13,7 @@ while True:
     if not success:
         print("Failed to capture image")
         break
-
+    img = cv2.flip(img, 1)
     img = detector.findHands(img)
     lmList = detector.findPosition(img)
     if lmList:
