@@ -5,7 +5,7 @@ cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
 cap.set(4, 720)
 
-# Initialize the hand detector
+# Initialise the hand detector
 detector = htm.handDetector(detectionCon=0.7)
 
 while True:
