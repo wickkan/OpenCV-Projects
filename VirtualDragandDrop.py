@@ -21,6 +21,8 @@ while True:
         cursor = lmList[8]
         if 100 < cursor[0] < 300 and 100 < cursor[1] < 300:
             colourR = 0, 255, 0
+        else:
+            colourR = (255, 0, 255)
 
     cv2.rectangle(img, (100, 100), (300, 300), colourR, cv2.FILLED)
 
