@@ -9,7 +9,6 @@ colourR = (255, 0, 255)
 
 cx, cy, w, h = 100, 100, 200, 200
 
-
 while True:
     success, img = cap.read()
     if not success:
@@ -21,13 +20,16 @@ while True:
     if hands:
         lmList = hands[0]['lmList']  # Get the first hand detected
         cursor = lmList[8]  # Index finger tip
-        if cx-w//2 < cursor[0] < cx+w//2 and cy-h//2 < cursor[1] < cy+h//2:
+        # Extract x and y coordinates
+        cursor_x, cursor_y = cursor[0], cursor[1]
+        if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
             colourR = (0, 255, 0)
+            cx, cy = cursor_x, cursor_y
         else:
             colourR = (255, 0, 255)
 
-    cv2.rectangle(img, (cx-w//2, cy-h//2),
-                  (cx+w//2, cy+h//2), colourR, cv2.FILLED)
+    cv2.rectangle(img, (cx - w // 2, cy - h // 2),
+                  (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
