@@ -18,26 +18,27 @@ while True:
     hands, img = detector.findHands(img)  # Updated method call
 
     if hands:
-        lmList = hands[0]['lmList']  # Get the first hand detected
+        for hand in hands:
+            lmList = hand['lmList']  # Get the landmarks for each hand
 
-        # Index finger tip
-        index_finger = lmList[8][:2]  # (x, y)
-        # Middle finger tip
-        middle_finger = lmList[12][:2]  # (x, y)
+            # Index finger tip
+            index_finger = lmList[8][:2]  # (x, y)
+            # Middle finger tip
+            middle_finger = lmList[12][:2]  # (x, y)
 
-        # Calculate distance
-        length, info, img = detector.findDistance(
-            index_finger, middle_finger, img)
-        if length < 30:
-            # Extract x and y coordinates of the index finger tip
-            cursor_x, cursor_y = index_finger
-            if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
-                colourR = (0, 255, 0)
-                cx, cy = cursor_x, cursor_y
+            # Calculate distance
+            length, info, img = detector.findDistance(
+                index_finger, middle_finger, img)
+            if length < 50:
+                # Extract x and y coordinates of the index finger tip
+                cursor_x, cursor_y = index_finger
+                if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
+                    colourR = (0, 255, 0)
+                    cx, cy = cursor_x, cursor_y
+                else:
+                    colourR = (255, 0, 255)
             else:
                 colourR = (255, 0, 255)
-        else:
-            colourR = (255, 0, 255)
 
     cv2.rectangle(img, (cx - w // 2, cy - h // 2),
                   (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
