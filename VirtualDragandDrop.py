@@ -19,9 +19,18 @@ while True:
 
     if hands:
         lmList = hands[0]['lmList']  # Get the first hand detected
-        cursor = lmList[8]  # Index finger tip
-        # Extract x and y coordinates
-        cursor_x, cursor_y = cursor[0], cursor[1]
+
+        # Index finger tip
+        index_finger = lmList[8][:2]  # (x, y)
+        # Middle finger tip
+        middle_finger = lmList[12][:2]  # (x, y)
+
+        # Calculate distance
+        length, info, img = detector.findDistance(
+            index_finger, middle_finger, img)
+
+        # Extract x and y coordinates of the index finger tip
+        cursor_x, cursor_y = index_finger
         if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
             colourR = (0, 255, 0)
             cx, cy = cursor_x, cursor_y
