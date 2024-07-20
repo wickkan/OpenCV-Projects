@@ -28,12 +28,14 @@ while True:
         # Calculate distance
         length, info, img = detector.findDistance(
             index_finger, middle_finger, img)
-
-        # Extract x and y coordinates of the index finger tip
-        cursor_x, cursor_y = index_finger
-        if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
-            colourR = (0, 255, 0)
-            cx, cy = cursor_x, cursor_y
+        if length < 30:
+            # Extract x and y coordinates of the index finger tip
+            cursor_x, cursor_y = index_finger
+            if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
+                colourR = (0, 255, 0)
+                cx, cy = cursor_x, cursor_y
+            else:
+                colourR = (255, 0, 255)
         else:
             colourR = (255, 0, 255)
 
