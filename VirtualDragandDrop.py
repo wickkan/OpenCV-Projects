@@ -15,7 +15,16 @@ class DragRect():
         self.posCenter = posCenter
         self.size = size
 
-    def update(self,):
+    def update(self, cursor):
+        cx, cy = self.posCenter
+        w, h = self.size
+
+        # if the index finger tip is in the rectange region
+        if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
+            self.posCenter = cursor
+
+
+rect = DragRect([150, 150])
 
 
 while True:
@@ -40,14 +49,9 @@ while True:
                 index_finger, middle_finger, img)
             if length < 50:
                 # Extract x and y coordinates of the index finger tip
-                cursor_x, cursor_y = index_finger
-                if cx - w // 2 < cursor_x < cx + w // 2 and cy - h // 2 < cursor_y < cy + h // 2:
-                    colourR = (0, 255, 0)
-                    cx, cy = cursor_x, cursor_y
-                else:
-                    colourR = (255, 0, 255)
-            else:
-                colourR = (255, 0, 255)
+                cursor_x, cursor_y = index_finger  # index finger tip landmark
+                # call the update here
+                rect.update(cursor)
 
     cv2.rectangle(img, (cx - w // 2, cy - h // 2),
                   (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
