@@ -53,6 +53,9 @@ while True:
                 # call the update here
                 rect.update(cursor)
 
+    # Draw
+    cx, cy = rect.posCenter
+    w, h = rect.size
     cv2.rectangle(img, (cx - w // 2, cy - h // 2),
                   (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
     cv2.imshow("Image", img)
