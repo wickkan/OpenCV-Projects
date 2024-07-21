@@ -60,8 +60,9 @@ while True:
     for rect in rectList:
         cx, cy = rect.posCenter
         w, h = rect.size
-    cv2.rectangle(img, (cx - w // 2, cy - h // 2),
-                  (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
+        cv2.rectangle(img, (cx - w // 2, cy - h // 2),
+                      (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
+
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
