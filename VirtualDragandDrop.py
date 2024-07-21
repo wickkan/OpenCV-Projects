@@ -24,7 +24,9 @@ class DragRect():
             self.posCenter = cursor
 
 
-rect = DragRect([150, 150])
+rectList = []
+for x in range(5):
+    rectList.append(DragRect([x*250+150, 150]))
 
 
 while True:
@@ -51,11 +53,13 @@ while True:
                 # Extract x and y coordinates of the index finger tip
                 cursor = index_finger  # index finger tip landmark
                 # call the update here
-                rect.update(cursor)
+                for rect in rectList:
+                    rect.update(cursor)
 
     # Draw
-    cx, cy = rect.posCenter
-    w, h = rect.size
+    for rect in rectList:
+        cx, cy = rect.posCenter
+        w, h = rect.size
     cv2.rectangle(img, (cx - w // 2, cy - h // 2),
                   (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
     cv2.imshow("Image", img)
