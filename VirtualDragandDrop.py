@@ -9,6 +9,15 @@ colourR = (255, 0, 255)
 
 cx, cy, w, h = 100, 100, 200, 200
 
+
+class DragRect():
+    def __init__(self, posCenter, size=[200, 200]):
+        self.posCenter = posCenter
+        self.size = size
+
+    def update(self,):
+
+
 while True:
     success, img = cap.read()
     if not success:
