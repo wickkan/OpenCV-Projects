@@ -1,5 +1,6 @@
 import cv2
 from cvzone.HandTrackingModule import HandDetector
+import cvzone
 
 cap = cv2.VideoCapture(0)
 cap.set(3, 1280)
@@ -62,6 +63,8 @@ while True:
         w, h = rect.size
         cv2.rectangle(img, (cx - w // 2, cy - h // 2),
                       (cx + w // 2, cy + h // 2), colourR, cv2.FILLED)
+        cvzone.cornerRect(img, (cx - w // 2, cy - h // 2,
+                          w, h), 20, rt=0)
 
     cv2.imshow("Image", img)
 
