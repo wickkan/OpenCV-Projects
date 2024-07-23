@@ -21,3 +21,5 @@ This project implements a virtual drag-and-drop interface using hand gestures ca
 - **Hand Tracking**: Uses MediaPipe and cvzone to detect and track hand landmarks.
 - **Drag and Drop**: Allows dragging and dropping rectangles on the screen using index and middle finger gestures.
 - **Multiple Rectangles**: Handles multiple draggable rectangles.
+
+![drag_and_drop](https://github.com/user-attachments/assets/25190d5e-d24f-4cdf-9347-045fa371894e)
