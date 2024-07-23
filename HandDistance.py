@@ -16,6 +16,10 @@ while True:
         print("Failed to capture image")
         break
     hands, img = detector.findHands(img)
+
+    if hands:
+        lmList = hands[0]['lmList']
+
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
