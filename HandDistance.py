@@ -2,6 +2,7 @@ import cv2
 from cvzone.HandTrackingModule import HandDetector
 import math
 import numpy as np
+import cvzone
 
 # Webcam setup
 cap = cv2.VideoCapture(0)
@@ -29,12 +30,15 @@ while True:
 
     if hands:
         lmList = hands[0]['lmList']
+        bbox = hands[0]['bbox']
         x1, y1 = lmList[5]
         x2, y2 = lmList[17]
 
         distance = int(math.sqrt((y2-y1)**2 + (x2-x1)**2))
         A, B, C = coff
         distanceCM = A*distance**2 + B*distance + C
+
+        cvzone.putTextRect(img, f'{int(distanceCM)} cm', )
 
     cv2.imshow("Image", img)
 

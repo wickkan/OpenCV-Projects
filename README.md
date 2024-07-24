@@ -23,3 +23,8 @@ This project implements a virtual drag-and-drop interface using hand gestures ca
 - **Multiple Rectangles**: Handles multiple draggable rectangles.
 
 ![drag_and_drop](https://github.com/user-attachments/assets/25190d5e-d24f-4cdf-9347-045fa371894e)
+
+Inspiration for projects from:
+
+- https://www.computervision.zone/
+- https://www.youtube.com/@murtazasworkshop
