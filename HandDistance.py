@@ -23,6 +23,8 @@ while True:
         x1, y1 = lmList[5]
         x2, y2 = lmList[17]
 
+        distance = math.sqrt((y2-y1)**2 + (x2-x1)**2)
+
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
