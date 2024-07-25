@@ -49,6 +49,7 @@ while True:
     cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
     cv2.circle(img, (cx, cy), 10, (255, 255, 255), cv2.FILLED)
     cv2.circle(img, (cx, cy), 20, (255, 255, 255), 2)
+    cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
 
     cv2.imshow("Image", img)
 
