@@ -38,7 +38,8 @@ while True:
         A, B, C = coff
         distanceCM = A * distance ** 2 + B * distance + C
 
-        cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x, y))
+        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 3)
+        cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
 
     cv2.imshow("Image", img)
 
