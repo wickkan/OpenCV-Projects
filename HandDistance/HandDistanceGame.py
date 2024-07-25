@@ -20,6 +20,7 @@ coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
 
 # game variables
 cx, cy = 250, 250
+color = (255, 0, 255)
 
 # Loop
 while True:
@@ -45,7 +46,7 @@ while True:
         cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
 
     # Draw Button
-    cv2.circle(img,)
+    cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
 
     cv2.imshow("Image", img)
 
