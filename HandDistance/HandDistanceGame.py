@@ -53,7 +53,7 @@ while True:
 
     # Game HUD
     cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3, offset=20)
-    cvzone.putTextRect(img, 'Points: 4', (100, 75), scale=3, offset=20)
+    cvzone.putTextRect(img, 'Points: 4', (60, 75), scale=3, offset=20)
 
     cv2.imshow("Image", img)
 
