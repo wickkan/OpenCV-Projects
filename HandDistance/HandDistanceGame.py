@@ -51,6 +51,8 @@ while True:
     cv2.circle(img, (cx, cy), 20, (255, 255, 255), 2)
     cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
 
+    # Game HUD
+
     cv2.imshow("Image", img)
 
     # Check for 'q' key press to exit
