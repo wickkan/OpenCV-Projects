@@ -52,7 +52,7 @@ while True:
     cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
 
     # Game HUD
-    cvzone.putTextRect(img, 'Time: 30', (1100, 75), scale=5)
+    cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3)
 
     cv2.imshow("Image", img)
 
