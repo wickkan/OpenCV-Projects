@@ -55,6 +55,7 @@ while True:
         color = (0, 255, 0)
         if counter == 3:
             color = (255, 0, 255)
+            counter = 0
 
     # Draw Button
     cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
