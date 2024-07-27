@@ -21,6 +21,7 @@ coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
 # game variables
 cx, cy = 250, 250
 color = (255, 0, 255)
+counter = 0
 
 # Loop
 while True:
@@ -44,12 +45,16 @@ while True:
 
         if distanceCM < 40:
             if x < cx < x+w and y < cy < y+h:
-                color = (0, 255, 0)
-        else:
-            color = (255, 0, 255)
+                counter = 1
 
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 3)
         cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
+
+    if counter:
+        counter += 1
+        color = (0, 255, 0)
+        if counter == 3:
+            color = (255, 0, 255)
 
     # Draw Button
     cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
