@@ -43,7 +43,10 @@ while True:
         distanceCM = A * distance ** 2 + B * distance + C
 
         if distanceCM < 40:
-            color = (0, 255, 0)
+            if x < cx < x+w and y < cy < y+h:
+                color = (0, 255, 0)
+            else:
+                color = (255, 0, 255)
 
         cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 3)
         cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
