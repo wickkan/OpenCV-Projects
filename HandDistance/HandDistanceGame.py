@@ -3,6 +3,7 @@ from cvzone.HandTrackingModule import HandDetector
 import math
 import numpy as np
 import cvzone
+import time
 
 # Webcam setup
 cap = cv2.VideoCapture(0)
@@ -23,6 +24,8 @@ cx, cy = 250, 250
 color = (255, 0, 255)
 counter = 0
 score = 0
+timeStart = time.time()
+totalTime = 20
 
 # Loop
 while True:
@@ -32,46 +35,51 @@ while True:
         print("Failed to capture image")
         break
 
-    # Unpack the tuple returned by findHands
-    hands, img = detector.findHands(img, draw=False)
+    if time.time() - timeStart < totalTime:
 
-    if hands:
-        lmList = hands[0]['lmList']
-        x, y, w, h = hands[0]['bbox']
-        x1, y1 = lmList[5][:2]  # Get the coordinates of landmark 5
-        x2, y2 = lmList[17][:2]  # Get the coordinates of landmark 17
+        # Unpack the tuple returned by findHands
+        hands, img = detector.findHands(img, draw=False)
 
-        distance = int(math.sqrt((y2 - y1) ** 2 + (x2 - x1) ** 2))
-        A, B, C = coff
-        distanceCM = A * distance ** 2 + B * distance + C
+        if hands:
+            lmList = hands[0]['lmList']
+            x, y, w, h = hands[0]['bbox']
+            x1, y1 = lmList[5][:2]  # Get the coordinates of landmark 5
+            x2, y2 = lmList[17][:2]  # Get the coordinates of landmark 17
 
-        if distanceCM < 40:
-            if x < cx < x+w and y < cy < y+h:
-                counter = 1
+            distance = int(math.sqrt((y2 - y1) ** 2 + (x2 - x1) ** 2))
+            A, B, C = coff
+            distanceCM = A * distance ** 2 + B * distance + C
 
-        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 3)
-        cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
+            if distanceCM < 40:
+                if x < cx < x+w and y < cy < y+h:
+                    counter = 1
 
-    if counter:
-        counter += 1
-        color = (0, 255, 0)
-        if counter == 3:
-            cx = np.random.ranind(100, 1100)
-            cy = np.random.ranind(100, 600)
-            color = (255, 0, 255)
-            score += 1
-            counter = 0
+            cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 255), 3)
+            cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
 
-    # Draw Button
-    cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
-    cv2.circle(img, (cx, cy), 10, (255, 255, 255), cv2.FILLED)
-    cv2.circle(img, (cx, cy), 20, (255, 255, 255), 2)
-    cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
+        if counter:
+            counter += 1
+            color = (0, 255, 0)
+            if counter == 3:
+                cx = np.random.ranind(100, 1100)
+                cy = np.random.ranind(100, 600)
+                color = (255, 0, 255)
+                score += 1
+                counter = 0
 
-    # Game HUD
-    cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3, offset=20)
-    cvzone.putTextRect(
-        img, f'Points: {str(score).zfill(2)}', (60, 75), scale=3, offset=20)
+        # Draw Button
+        cv2.circle(img, (cx, cy), 30, color, cv2.FILLED)
+        cv2.circle(img, (cx, cy), 10, (255, 255, 255), cv2.FILLED)
+        cv2.circle(img, (cx, cy), 20, (255, 255, 255), 2)
+        cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
+
+        # Game HUD
+        cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3, offset=20)
+        cvzone.putTextRect(
+            img, f'Points: {str(score).zfill(2)}', (60, 75), scale=3, offset=20)
+
+    else:
+        pass
 
     cv2.imshow("Image", img)
 
