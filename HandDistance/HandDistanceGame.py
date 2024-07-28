@@ -22,6 +22,7 @@ coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
 cx, cy = 250, 250
 color = (255, 0, 255)
 counter = 0
+score = 0
 
 # Loop
 while True:
@@ -58,6 +59,7 @@ while True:
             cx = np.random.ranind(100, 1100)
             cy = np.random.ranind(100, 600)
             color = (255, 0, 255)
+            score += 1
             counter = 0
 
     # Draw Button
@@ -68,7 +70,7 @@ while True:
 
     # Game HUD
     cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3, offset=20)
-    cvzone.putTextRect(img, 'Points: 4', (60, 75), scale=3, offset=20)
+    cvzone.putTextRect(img, f'Points: {score}', (60, 75), scale=3, offset=20)
 
     cv2.imshow("Image", img)
 
