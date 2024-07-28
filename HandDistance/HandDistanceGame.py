@@ -19,7 +19,7 @@ x = [300, 245, 200, 170, 145, 130, 112, 103, 93, 87, 80, 75, 70, 67, 62, 59, 57]
 y = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
 coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
 
-# game variables
+# Game variables
 cx, cy = 250, 250
 color = (255, 0, 255)
 counter = 0
@@ -61,8 +61,8 @@ while True:
             counter += 1
             color = (0, 255, 0)
             if counter == 3:
-                cx = np.random.ranind(100, 1100)
-                cy = np.random.ranind(100, 600)
+                cx = np.random.randint(100, 1100)
+                cy = np.random.randint(100, 600)
                 color = (255, 0, 255)
                 score += 1
                 counter = 0
