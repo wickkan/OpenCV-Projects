@@ -74,7 +74,8 @@ while True:
         cv2.circle(img, (cx, cy), 30, (50, 50, 50), 2)
 
         # Game HUD
-        cvzone.putTextRect(img, 'Time: 30', (1000, 75), scale=3, offset=20)
+        cvzone.putTextRect(
+            img, f'Time: {int(totalTime-(time.time()-timeStart))}', (1000, 75), scale=3, offset=20)
         cvzone.putTextRect(
             img, f'Points: {str(score).zfill(2)}', (60, 75), scale=3, offset=20)
 
