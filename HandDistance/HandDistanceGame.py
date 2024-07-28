@@ -26,6 +26,7 @@ counter = 0
 # Loop
 while True:
     success, img = cap.read()
+    img = cv2.flip(img, 1)
     if not success:
         print("Failed to capture image")
         break
@@ -54,6 +55,8 @@ while True:
         counter += 1
         color = (0, 255, 0)
         if counter == 3:
+            cx = np.random.ranind(100, 1100)
+            cy = np.random.ranind(100, 600)
             color = (255, 0, 255)
             counter = 0
 
