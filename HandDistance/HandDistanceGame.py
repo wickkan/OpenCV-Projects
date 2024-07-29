@@ -25,7 +25,7 @@ color = (255, 0, 255)
 counter = 0
 score = 0
 timeStart = time.time()
-totalTime = 20
+totalTime = 2
 
 # Loop
 while True:
@@ -80,7 +80,8 @@ while True:
             img, f'Points: {str(score).zfill(2)}', (60, 75), scale=3, offset=20)
 
     else:
-        pass
+        cvzone.putTextRect(
+            img, 'Game Over', (400, 400), scale=5, offset=30, thickness=7)
 
     cv2.imshow("Image", img)
 
