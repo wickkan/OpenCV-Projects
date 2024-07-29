@@ -82,6 +82,8 @@ while True:
     else:
         cvzone.putTextRect(
             img, 'Game Over', (400, 400), scale=5, offset=30, thickness=7)
+        cvzone.putTextRect(
+            img, f'Points: {score}', (425, 500), scale=5, offset=30, thickness=7)
 
     cv2.imshow("Image", img)
 
