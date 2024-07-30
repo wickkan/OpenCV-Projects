@@ -28,3 +28,13 @@ Inspiration for projects from:
 
 - https://www.computervision.zone/
 - https://www.youtube.com/@murtazasworkshop
+
+## Hand Distance Game
+
+This project implements a hand distance game using OpenCV and cvzone. The game detects the distance between the index and middle finger and uses this measurement to interact with objects on the screen. The goal is to touch the randomly appearing circles to score points.
+
+### Features
+
+- **Hand Tracking**: Uses MediaPipe and cvzone to detect and track hand landmarks.
+- **Distance Calculation**: Calculates the distance between the index and middle fingers to trigger interactions.
+- **Interactive Game**: Players score points by touching randomly appearing circles within a set time limit.
