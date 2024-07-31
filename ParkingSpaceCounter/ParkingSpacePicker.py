@@ -1,9 +1,19 @@
 import cv2
 import pickle
 
-img = cv2.imread('carParking.png')
+# Load the image
+img = cv2.imread(
+    'ParkingSpaceCounter/carParking.png')
+
+# Check if the image was loaded successfully
+if img is None:
+    print("Error: Unable to load image. Check the file path and try again.")
+    exit()
 
 while True:
-    cv2.rectangle(img, (100, 100), (200, 150), (255, 0, 255), 2)
-    cv2.imshow("image")
-    cv2.waitKey(1)
+    cv2.rectangle(img, (80, 230), (200, 150), (255, 0, 255), 2)
+    cv2.imshow("image", img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+cv2.destroyAllWindows()
