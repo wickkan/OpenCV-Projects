@@ -19,8 +19,12 @@ def mouseClick(events, x, y, flags, params):
 
 
 while True:
+
+    for pos in posList:
+        cv2.rectangle(
+            img, pos, (pos[0]+width, pos[1]+height), (255, 0, 255), 2)
+
     cv2.setMouseCallback("Image", mouseClick)
-    # cv2.rectangle(img, (50, 192), (157, 240), (255, 0, 255), 2)
     cv2.imshow("image", img)
 
     # Check for 'q' key press to exit the loop
