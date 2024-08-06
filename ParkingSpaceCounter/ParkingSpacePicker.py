@@ -18,14 +18,18 @@ def mouseClick(events, x, y, flags, params):
         posList.append((x, y))
 
 
+cv2.namedWindow("image")
+cv2.setMouseCallback("image", mouseClick)
+
 while True:
+    # Create a copy of the original image to draw rectangles on
+    img_copy = img.copy()
 
     for pos in posList:
         cv2.rectangle(
-            img, pos, (pos[0]+width, pos[1]+height), (255, 0, 255), 2)
+            img_copy, pos, (pos[0] + width, pos[1] + height), (255, 0, 255), 2)
 
-    cv2.setMouseCallback("Image", mouseClick)
-    cv2.imshow("image", img)
+    cv2.imshow("image", img_copy)
 
     # Check for 'q' key press to exit the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
