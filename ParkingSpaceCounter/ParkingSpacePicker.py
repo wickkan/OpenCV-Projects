@@ -10,7 +10,7 @@ if img is None:
     exit()
 
 while True:
-    cv2.rectangle(img, (80, 230), (200, 150), (255, 0, 255), 2)
+    cv2.rectangle(img, (50, 192), (157, 240), (255, 0, 255), 2)
     cv2.imshow("image", img)
 
     # Check for 'q' key press to exit the loop
