@@ -10,9 +10,17 @@ if img is None:
     exit()
 
 width, height = 107, 48
+posList = []
+
+
+def mouseClick(events, x, y, flags, params):
+    if events == cv2.EVENT_LBUTTONDOWN:
+        posList.append((x, y))
+
 
 while True:
-    cv2.rectangle(img, (50, 192), (157, 240), (255, 0, 255), 2)
+    cv2.setMouseCallback("Image", mouseClick)
+    # cv2.rectangle(img, (50, 192), (157, 240), (255, 0, 255), 2)
     cv2.imshow("image", img)
 
     # Check for 'q' key press to exit the loop
