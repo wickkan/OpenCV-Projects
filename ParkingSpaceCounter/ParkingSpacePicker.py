@@ -9,6 +9,8 @@ if img is None:
     print("Error: Unable to load image. Check the file path and try again.")
     exit()
 
+width, height = 107, 48
+
 while True:
     cv2.rectangle(img, (50, 192), (157, 240), (255, 0, 255), 2)
     cv2.imshow("image", img)
