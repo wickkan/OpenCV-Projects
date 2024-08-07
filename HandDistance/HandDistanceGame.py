@@ -25,7 +25,7 @@ color = (255, 0, 255)
 counter = 0
 score = 0
 timeStart = time.time()
-totalTime = 2
+totalTime = 30  # Set to 30 seconds
 
 # Loop
 while True:
