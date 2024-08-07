@@ -38,3 +38,13 @@ This project implements a hand distance game using OpenCV and cvzone. The game d
 - **Hand Tracking**: Uses MediaPipe and cvzone to detect and track hand landmarks.
 - **Distance Calculation**: Calculates the distance between the index and middle fingers to trigger interactions.
 - **Interactive Game**: Players score points by touching randomly appearing circles within a set time limit.
+
+## Parking Space Picker
+
+This project is a simple tool to manually identify and mark parking spaces in a parking lot image. The tool allows users to click on an image to draw rectangles representing parking spaces. The positions of these rectangles are saved and can be reloaded later, allowing for easy management of parking space data.
+
+### Features
+
+- **Add Parking Spaces**: Left-click on the image to create a new parking space rectangle.
+- **Remove Parking Spaces**: Right-click on an existing rectangle to remove it.
+- **Save/Load Positions**: The positions of the rectangles are automatically saved to a file using Python's `pickle` module. The positions are reloaded when the program is restarted.
