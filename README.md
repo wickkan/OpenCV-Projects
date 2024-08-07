@@ -1,5 +1,10 @@
 # OpenCV Projects
 
+Inspiration for projects from:
+
+- https://www.computervision.zone/
+- https://www.youtube.com/@murtazasworkshop
+
 ## Volume Hand Control with OpenCV and Hand Tracking
 
 This project leverages computer vision to control the system volume using hand gestures. By utilising OpenCV for video capture and hand tracking, along with the `osascript` library to adjust the volume on macOS, this application provides a touchless interface for managing audio levels.
@@ -24,11 +29,6 @@ This project implements a virtual drag-and-drop interface using hand gestures ca
 
 ![drag_and_drop](https://github.com/user-attachments/assets/25190d5e-d24f-4cdf-9347-045fa371894e)
 
-Inspiration for projects from:
-
-- https://www.computervision.zone/
-- https://www.youtube.com/@murtazasworkshop
-
 ## Hand Distance Game
 
 This project implements a hand distance game using OpenCV and cvzone. The game detects the distance between the index and middle finger and uses this measurement to interact with objects on the screen. The goal is to touch the randomly appearing circles to score points.
@@ -38,6 +38,8 @@ This project implements a hand distance game using OpenCV and cvzone. The game d
 - **Hand Tracking**: Uses MediaPipe and cvzone to detect and track hand landmarks.
 - **Distance Calculation**: Calculates the distance between the index and middle fingers to trigger interactions.
 - **Interactive Game**: Players score points by touching randomly appearing circles within a set time limit.
+
+![3c92f3dc-cb2f-415f-924d-2e03935c7f91](https://github.com/user-attachments/assets/4526ce59-4fd5-409a-bb22-58ce43e93011)
 
 ## Parking Space Picker
 
