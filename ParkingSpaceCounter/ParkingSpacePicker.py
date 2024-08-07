@@ -9,7 +9,12 @@ if img is None:
 
 
 width, height = 107, 48
-posList = []
+
+try:
+    with open('CarParkPos', 'rb') as f:
+        posList = pickle.load(f)
+except:
+    posList = []
 
 
 def mouseClick(events, x, y, flags, params):
