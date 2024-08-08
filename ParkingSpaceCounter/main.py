@@ -2,7 +2,7 @@ import cv2
 import os
 
 # Video file path
-video_path = 'carPark.mp4'
+video_path = 'ParkingSpaceCounter/carPark.mp4'
 
 # Check if the file exists
 if not os.path.exists(video_path):
