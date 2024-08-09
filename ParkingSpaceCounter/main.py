@@ -19,6 +19,10 @@ if not cap.isOpened():
 
 while True:
     success, img = cap.read()
+
+    if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
     if not success:
         print("Error: Couldn't read the video stream.")
         break
@@ -26,7 +30,7 @@ while True:
     cv2.imshow('Image', img)
 
     # Exit on pressing 'q'
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(10) & 0xFF == ord('q'):
         break
 
 cap.release()
