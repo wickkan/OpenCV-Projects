@@ -1,5 +1,6 @@
 import cv2
 import os
+import pickle
 
 # Video file path
 video_path = 'ParkingSpaceCounter/carPark.mp4'
@@ -12,16 +13,25 @@ if not os.path.exists(video_path):
 # Video feed
 cap = cv2.VideoCapture(video_path)
 
+width, height = 107, 48
+
 # Check if video capture is initialized successfully
 if not cap.isOpened():
     print("Error: Couldn't open video file.")
     exit()
+
+with open('CarParkPos', 'rb') as f:
+    posList = pickle.load(f)
 
 while True:
     success, img = cap.read()
 
     if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
+    for pos in posList:
+        cv2.rectangle(img, pos, (pos[0] + width,
+                      pos[1] + height), (255, 0, 255), 2)
 
     if not success:
         print("Error: Couldn't read the video stream.")
