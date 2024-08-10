@@ -19,8 +19,6 @@ width, height = 107, 48
 def checkParkingSpace():
     for pos in posList:
         x, y = pos
-        cv2.rectangle(img, pos, (pos[0] + width,
-                      pos[1] + height), (255, 0, 255), 2)
 
         imgCrop = img[y:y+height, x:x+width]
         cv2.imshow(str(x), imgCrop)
@@ -42,6 +40,9 @@ while True:
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
     checkParkingSpace()
+    for pos in posList:
+        cv2.rectangle(img, pos, (pos[0] + width,
+                      pos[1] + height), (255, 0, 255), 2)
 
     if not success:
         print("Error: Couldn't read the video stream.")
