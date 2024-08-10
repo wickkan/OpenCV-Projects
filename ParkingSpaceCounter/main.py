@@ -44,6 +44,8 @@ while True:
     imgThreshold = cv2.adaptiveThreshold(
         imgBlur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 25, 16)
 
+    imgMedian = cv2.medianBlur(imgThreshold, 5)
+
     checkParkingSpace()
     for pos in posList:
         cv2.rectangle(img, pos, (pos[0] + width,
