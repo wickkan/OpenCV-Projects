@@ -18,8 +18,12 @@ width, height = 107, 48
 
 def checkParkingSpace():
     for pos in posList:
+        x, y = pos
         cv2.rectangle(img, pos, (pos[0] + width,
                       pos[1] + height), (255, 0, 255), 2)
+
+        imgCrop = img[y:y+height, x:x+width]
+        cv2.imshow(str(x), imgCrop)
 
 
 # Check if video capture is initialized successfully
@@ -29,6 +33,7 @@ if not cap.isOpened():
 
 with open('CarParkPos', 'rb') as f:
     posList = pickle.load(f)
+
 
 while True:
     success, img = cap.read()
