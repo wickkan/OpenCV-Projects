@@ -39,6 +39,9 @@ while True:
     if cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT):
         cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
+    imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    imgBlur = cv2.GaussianBlur(imgGrey, (3, 3), 1)
+
     checkParkingSpace()
     for pos in posList:
         cv2.rectangle(img, pos, (pos[0] + width,
@@ -49,6 +52,7 @@ while True:
         break
 
     cv2.imshow('Image', img)
+    cv2.imshow('ImageBlue', imgBlur)
 
     # Exit on pressing 'q'
     if cv2.waitKey(10) & 0xFF == ord('q'):
