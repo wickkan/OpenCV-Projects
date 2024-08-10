@@ -41,6 +41,8 @@ while True:
 
     imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     imgBlur = cv2.GaussianBlur(imgGrey, (3, 3), 1)
+    imgThreshold = cv2.adaptiveThreshold(
+        imgBlur, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 25, 16)
 
     checkParkingSpace()
     for pos in posList:
@@ -53,6 +55,7 @@ while True:
 
     cv2.imshow('Image', img)
     cv2.imshow('ImageBlue', imgBlur)
+    cv2.imshow('ImageThres', imgThreshold)
 
     # Exit on pressing 'q'
     if cv2.waitKey(10) & 0xFF == ord('q'):
