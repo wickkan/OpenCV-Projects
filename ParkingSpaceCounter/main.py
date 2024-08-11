@@ -2,6 +2,7 @@ import cv2
 import os
 import pickle
 import numpy as np
+import cvzone
 
 # Video file path
 video_path = 'ParkingSpaceCounter/carPark.mp4'
@@ -24,6 +25,8 @@ def checkParkingSpace(imgPro):
         imgCrop = imgPro[y:y+height, x:x+width]
         cv2.imshow(str(x), imgCrop)
         count = cv2.countNonZero(imgCrop)
+        cvzone.putTextRect(img, str(count), (x, y+height-10),
+                           scale=1, thickness=1, offset=0)
 
 
 # Check if video capture is initialized successfully
