@@ -25,8 +25,8 @@ def checkParkingSpace(imgPro):
         imgCrop = imgPro[y:y+height, x:x+width]
         cv2.imshow(str(x), imgCrop)
         count = cv2.countNonZero(imgCrop)
-        cvzone.putTextRect(img, str(count), (x, y+height-5),
-                           scale=1.5, thickness=2, offset=0)
+        cvzone.putTextRect(img, str(count), (x, y+height-3),
+                           scale=1, thickness=2, offset=0)
 
 
 # Check if video capture is initialized successfully
