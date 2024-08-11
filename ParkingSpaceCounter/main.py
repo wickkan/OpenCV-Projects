@@ -23,6 +23,7 @@ def checkParkingSpace(imgPro):
 
         imgCrop = imgPro[y:y+height, x:x+width]
         cv2.imshow(str(x), imgCrop)
+        count = cv2.countNonZero(imgCrop)
 
 
 # Check if video capture is initialized successfully
