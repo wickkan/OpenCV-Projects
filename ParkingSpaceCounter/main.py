@@ -17,11 +17,11 @@ cap = cv2.VideoCapture(video_path)
 width, height = 107, 48
 
 
-def checkParkingSpace():
+def checkParkingSpace(imgPro):
     for pos in posList:
         x, y = pos
 
-        imgCrop = img[y:y+height, x:x+width]
+        imgCrop = imgPro[y:y+height, x:x+width]
         cv2.imshow(str(x), imgCrop)
 
 
@@ -49,7 +49,7 @@ while True:
     kernel = np.ones((3, 3), np.uint8)
     imgDilate = cv2.dilate(imgMedian, kernel, iterations=1)
 
-    checkParkingSpace()
+    checkParkingSpace(imgDilate)
     for pos in posList:
         cv2.rectangle(img, pos, (pos[0] + width,
                       pos[1] + height), (255, 0, 255), 2)
