@@ -23,7 +23,6 @@ def checkParkingSpace(imgPro):
         x, y = pos
 
         imgCrop = imgPro[y:y+height, x:x+width]
-        cv2.imshow(str(x), imgCrop)
         count = cv2.countNonZero(imgCrop)
         cvzone.putTextRect(img, str(count), (x, y+height-3),
                            scale=1, thickness=2, offset=0)
@@ -63,8 +62,6 @@ while True:
         break
 
     cv2.imshow('Image', img)
-    cv2.imshow('ImageBlue', imgBlur)
-    cv2.imshow('ImageThres', imgThreshold)
 
     # Exit on pressing 'q'
     if cv2.waitKey(10) & 0xFF == ord('q'):
