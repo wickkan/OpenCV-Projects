@@ -50,3 +50,7 @@ This project is a simple tool to manually identify and mark parking spaces in a 
 - **Add Parking Spaces**: Left-click on the image to create a new parking space rectangle.
 - **Remove Parking Spaces**: Right-click on an existing rectangle to remove it.
 - **Save/Load Positions**: The positions of the rectangles are automatically saved to a file using Python's `pickle` module. The positions are reloaded when the program is restarted.
+  
+<img width="1093" alt="Screenshot 2024-08-13 at 3 22 31 PM" src="https://github.com/user-attachments/assets/7302610e-032e-4f64-b2ef-c5c2f69aaa3f">
+
+  
