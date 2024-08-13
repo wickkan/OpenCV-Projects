@@ -27,7 +27,7 @@ def checkParkingSpace(imgPro):
         cvzone.putTextRect(img, str(count), (x, y+height-3),
                            scale=1, thickness=2, offset=0)
 
-        if count < 800:
+        if count < 900:
             colour = (0, 255, 0)
             thickness = 5
         else:
