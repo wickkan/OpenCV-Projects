@@ -27,6 +27,15 @@ def checkParkingSpace(imgPro):
         cvzone.putTextRect(img, str(count), (x, y+height-3),
                            scale=1, thickness=2, offset=0)
 
+        if count < 800:
+            colour = (0, 255, 0)
+            thickness = 5
+        else:
+            colour = (0, 0, 255)
+            thickness = 2
+        cv2.rectangle(img, pos, (pos[0] + width,
+                      pos[1] + height), colour, thickness)
+
 
 # Check if video capture is initialized successfully
 if not cap.isOpened():
@@ -53,9 +62,6 @@ while True:
     imgDilate = cv2.dilate(imgMedian, kernel, iterations=1)
 
     checkParkingSpace(imgDilate)
-    for pos in posList:
-        cv2.rectangle(img, pos, (pos[0] + width,
-                      pos[1] + height), (255, 0, 255), 2)
 
     if not success:
         print("Error: Couldn't read the video stream.")
