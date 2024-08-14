@@ -19,22 +19,27 @@ width, height = 107, 48
 
 
 def checkParkingSpace(imgPro):
+
+    spaceCounter = 0
+
     for pos in posList:
         x, y = pos
 
         imgCrop = imgPro[y:y+height, x:x+width]
         count = cv2.countNonZero(imgCrop)
-        cvzone.putTextRect(img, str(count), (x, y+height-3),
-                           scale=1, thickness=2, offset=0, colorR=(0, 0, 255))
 
         if count < 900:
             colour = (0, 255, 0)
             thickness = 5
+            spaceCounter += 1
         else:
             colour = (0, 0, 255)
             thickness = 2
         cv2.rectangle(img, pos, (pos[0] + width,
                       pos[1] + height), colour, thickness)
+
+    cvzone.putTextRect(img, str(spaceCounter), (100, 50),
+                       scale=3, thickness=5, offset=20, colorR=(0, 200, 00))
 
 
 # Check if video capture is initialized successfully
