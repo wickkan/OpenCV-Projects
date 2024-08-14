@@ -25,7 +25,7 @@ def checkParkingSpace(imgPro):
         imgCrop = imgPro[y:y+height, x:x+width]
         count = cv2.countNonZero(imgCrop)
         cvzone.putTextRect(img, str(count), (x, y+height-3),
-                           scale=1, thickness=2, offset=0)
+                           scale=1, thickness=2, offset=0, colorR=(0, 0, 255))
 
         if count < 900:
             colour = (0, 255, 0)
