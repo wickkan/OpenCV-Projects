@@ -42,7 +42,7 @@ def checkParkingSpace(imgPro):
                        scale=3, thickness=5, offset=20, colorR=(0, 200, 00))
 
 
-# Check if video capture is initialized successfully
+# Check if video capture is initialised successfully
 if not cap.isOpened():
     print("Error: Couldn't open video file.")
     exit()
